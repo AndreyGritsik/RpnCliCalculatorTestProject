@@ -42,14 +42,14 @@ public class RpnCalculator {
         List<String> parsedValues = Arrays.asList(userInput.split(" ")).stream().map(s -> s.trim()).collect(Collectors.toList());
         for (String inputItem : parsedValues) {
             if (arithmeticPattern.matcher(inputItem).matches()) {
-                return executeCalculation(inputItem);
+                return performCalculation(inputItem);
             }
             operandStack.push(Double.parseDouble(inputItem));
         }
         return userInput;
     }
 
-    private String executeCalculation(String inputItem) {
+    private String performCalculation(String inputItem) {
         if (operandStack.empty() || operandStack.size() < 2) {
             return "Cannot perform operation with less than 2 operands";
         }
